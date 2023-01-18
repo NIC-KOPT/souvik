@@ -9,7 +9,7 @@ public class Frontcontroller {
 	
 	@GetMapping("/welcome")
 	public ResponseEntity<?> welcome() {
-		return ResponseEntity.ok("Welocme to Front Controller -- Hello Devops");	
+		return ResponseEntity.ok("Welocme to Front Controller -- 18012022");	
 	}
 
 }
