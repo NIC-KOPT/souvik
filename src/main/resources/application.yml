@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://10.173.45.12:5432/postgres
+    username: postgres
+    password: password
+#  application:
+#    name: souvik
+    
+#server:
+    #port: ${PORT:0}
+
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true 

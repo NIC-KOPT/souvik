@@ -1,5 +1,6 @@
 package com.nic.souvik.controller;
 
+
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.nic.souvik.model.RequestModel;
 
+
 @RestController
-public class Frontcontroller {
+public class SPFrontController {
 
 	@Autowired
 	private NicEmployeeController nicEmployeeController;
@@ -28,11 +29,7 @@ public class Frontcontroller {
 	RequestModel RequestModel;
 	double start_time = 0.0;
 	double end_time = 0.0;
-	@GetMapping("/welcome")
-	public ResponseEntity<?> welcome() {
-		return ResponseEntity.ok("Welcome to Front Controller -- 4th Commit");	
-	}
-	@GetMapping("/")
+	@GetMapping("/sparch")
 	public String root() {
 		logger.info("Root service is called");
 		start_time= System.currentTimeMillis();
@@ -41,24 +38,24 @@ public class Frontcontroller {
 		logger.info("Root service end TTL: "+((end_time - start_time) / 1000) + "sec");
 		return "This is root  of SP Architecture";
 	}
-	@GetMapping("/error")
+	@GetMapping("/sparch/error")
 	public String error() {
 		System.out.println("This is error service of SP Architecture");
 
 		return "This is error service  of SP Architecture";
 	}
-	@GetMapping("/status")
+	@GetMapping("/sparch/status")
 	public String status() {
 		System.out.println("Your are in Instance : "+env.getProperty("local.server.port") +" of SP Architecture");
 
 		return "SPArchitecture Instance : "+ env.getProperty("local.server.port") ;
 	}
-	@GetMapping("/getallemp")
+	@GetMapping("/sparch/getallemp")
 	public ResponseEntity<?> fetchallEmployees(@RequestHeader Map<String, String> header) throws Exception {
 		RequestModel.setHeader(header);
 		return ResponseEntity.ok(nicEmployeeController.fetchallEmployees(RequestModel));
 		}
-	@PostMapping("/getemp")
+	@PostMapping("/sparch/getemp")
 	public ResponseEntity<?> fetchEmployee(@RequestBody Map<String, String> body , @RequestHeader Map<String, String> header ) throws Exception {
 		System.out.println("body " +body);
 		System.out.println("header"+ header);
@@ -66,7 +63,7 @@ public class Frontcontroller {
 		RequestModel.setHeader(header);
 	return ResponseEntity.ok(nicEmployeeController.fetchEmployee(RequestModel));
 	}
-	@PostMapping("/setemp")
+	@PostMapping("/sparch/setemp")
 	public ResponseEntity<?> saveEmployee(@RequestBody Map<String, String> body , @RequestHeader Map<String, String> header ) throws Exception {
 		System.out.println("body " +body);
 		System.out.println("header"+ header);
@@ -74,5 +71,4 @@ public class Frontcontroller {
 		RequestModel.setHeader(header);
 	return ResponseEntity.ok(nicEmployeeController.saveEmployee(RequestModel));
 	}
-
 }
