@@ -25,19 +25,19 @@ public class NicEmployeeServiceImpl implements NicEmployeeService{
 	@Override
 	public ResponseModel fetchEmployee(RequestModel RequestModel) {
 		//unpack header to check host and other details and add validation of data. 
-		if(testgateway(RequestModel))
-		return null;
-		if(!validateToken(RequestModel))
-		return null;
+//		if(testgateway(RequestModel))
+//		return null;
+//		if(!validateToken(RequestModel))
+//		return null;
 		return nicEmployeeDao.fetchEmployee(RequestModel);
 	}
 
 	@Override
 	public ResponseModel fetchAllEmployee(RequestModel RequestModel) {
-		if(testgateway(RequestModel))
-			return null;
-			if(!validateToken(RequestModel))
-			return null;
+//		if(testgateway(RequestModel))
+//			return null;
+//			if(!validateToken(RequestModel))
+//			return null;
 			return nicEmployeeDao.fetchallEmployees(RequestModel);
 	}
 
