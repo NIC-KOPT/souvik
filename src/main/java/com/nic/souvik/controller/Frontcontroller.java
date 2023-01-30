@@ -23,7 +23,7 @@ public class Frontcontroller {
 	@Autowired
 	private Environment env;
 	@Autowired
-	private static final Logger logger = LoggerFactory.getLogger(SPFrontController.class);
+	private static final Logger logger = LoggerFactory.getLogger(Frontcontroller.class);
 	@Autowired
 	RequestModel RequestModel;
 	double start_time = 0.0;
